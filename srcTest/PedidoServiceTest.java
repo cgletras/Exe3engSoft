@@ -17,6 +17,12 @@ public class PedidoServiceTest {
 	
 	@Mock
 	private Pedido pedido;
+	
+	@Mock
+	private Produto produto;
+	
+	@Mock
+	private ItemPedido ItemPedido;
 
 	@Before
 	public void initPedidoService() {
