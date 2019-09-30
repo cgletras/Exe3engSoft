@@ -1,7 +1,7 @@
 
 public class ItemPedido {
 
-	Produto produto;
+	private Produto produto;
 	private Integer quantidade;
 	
 	public ItemPedido(Produto produto, Integer quantidade) {
@@ -28,5 +28,14 @@ public class ItemPedido {
     public Double calcularPreco() {
         return produto.obterPreco(getQuantidade());
     }
+    
+    // Não consegui Mockar o ItemProduto no teste. Mas esta funcional. Estava retornando valor zero no mock, não entendi o porque
+    public static void main(String[] args) {
+		
+    	Produto produto = new Produto(1L, 20.0);
+    	ItemPedido item = new ItemPedido(produto, 3);
+    	
+    	System.out.println(item.calcularPreco());
+	}
 	
 }
