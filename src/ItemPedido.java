@@ -5,7 +5,8 @@ public class ItemPedido {
 	private Integer quantidade;
 	
 	public ItemPedido(Produto produto, Integer quantidade) {
-        this.produto = produto;
+        super();
+		this.produto = produto;
         this.quantidade = quantidade;
     }
 
@@ -26,10 +27,10 @@ public class ItemPedido {
     }
 
     public Double calcularPreco() {
-        return produto.obterPreco(getQuantidade());
+        return produto.obterPreco(quantidade);
     }
     
-    // Não consegui Mockar o ItemProduto no teste. Mas esta funcional. Estava retornando valor zero no mock, não entendi o porque
+    // Não consegui Mockar o ItemPedido no teste. Mas esta funcional. Estava retornando valor zero no mock, não entendi o porque
     public static void main(String[] args) {
 		
     	Produto produto = new Produto(1L, 20.0);

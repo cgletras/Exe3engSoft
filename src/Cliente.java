@@ -32,8 +32,6 @@ public class Cliente {
 	}
 	
 	public Double obterValorComDesconto(Pedido pedido) {
-        Double valorBase = pedido.obterValorBase();
-        return valorBase - (valorBase * getPercentualDesconto() / 100.0);
+		return pedido.obterValorBase() - (pedido.obterValorBase()*(percentualDesconto/100.0));
     }
-	
 }

@@ -5,15 +5,15 @@ public class Pedido {
 
 	private Long id;
 	private Double valorBase;
-	private List<ItemPedido> itemPedidoList = new ArrayList<>();
+	private List<ItemPedido> itemPedidoLista = new ArrayList<>();
 	
 	private Cliente cliente;
-	private Produto produto;
 	
 	public Pedido() {}
 	
 	public Pedido(List<ItemPedido> itemPedidoList, Cliente cliente) {
-        this.itemPedidoList = itemPedidoList;
+        super();
+		this.itemPedidoLista = itemPedidoList;
         this.cliente = cliente;
     }
 	
@@ -32,16 +32,18 @@ public class Pedido {
 	}
 	
 	public List<ItemPedido> getItemPedidoList() {
-        return itemPedidoList;
+        return itemPedidoLista;
     }
 	
 	public Double calcularPreco() {
-        itemPedidoList.forEach(item -> valorBase += item.calcularPreco());
+       
+		for (ItemPedido itemPedido : itemPedidoLista) {
+			valorBase += itemPedido.calcularPreco();
+		}
         return cliente.obterValorComDesconto(this);
     }
 	
     public Double obterValorBase() {
         return this.valorBase;
     }
-	
 }

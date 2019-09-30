@@ -1,5 +1,6 @@
 import static org.mockito.Mockito.when;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -17,20 +18,19 @@ public class ProdutoTest {
 	@Before
 	public void initPedidoService() {
 		MockitoAnnotations.initMocks(this);
-		itemPedido = new ItemPedido(produto, 2);
 	}
 	
 	@Test
 	public void testaObterPreco() {
 		Produto produto = new Produto(1L, 20.0);
 		double valor = produto.obterPreco(3);
-		Assertions.assertEquals(valor, 60.0);
+		Assert.assertEquals(valor, 60.0, 0.0);
 	}
 	
 	@Test
 	public void testaCalculaPreco() {
-		Produto produto = new Produto(1L, 40.0);
+		when(produto.obterPreco(3)).thenReturn(120.0);
 		double valor = itemPedido.calcularPreco();
-		Assertions.assertEquals(valor, 120.0);
+		Assert.assertEquals(valor, 120.0, 0.0);
 	}
 }
